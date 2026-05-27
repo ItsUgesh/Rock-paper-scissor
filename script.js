@@ -1,5 +1,5 @@
 let humanScore = 0;
-let ComputerScore = 0;
+let computerScore = 0;
 
 function getComputerChoice() {
     const choices = ["rock", "paper", "scissors"];
@@ -8,21 +8,21 @@ function getComputerChoice() {
     return computerChoice;
 }
 
-const computerSelection = getComputerChoice();
+
 
 function getHumanChoice() {
-    const humanChoice = prompt("Please! Select rock, paper or scissors =>").toLocaleLowerCase();
+    const humanChoice = prompt("Please! Select rock, paper or scissors ->").toLocaleLowerCase();
     console.log(humanChoice);
     return humanChoice;
 }
 
-const humanSelection = getHumanChoice();
+
 
 function playRound(humanChoice, computerChoice) {
     if (humanChoice === computerChoice) {
-        console.log("Draw! Play again");
+        console.log("Draw! ummh same choice.");
     } else if (humanChoice === "rock" && computerChoice === "paper") {
-        ComputerScore++;
+        computerScore++;
         console.log("You Lose! Paper beats Rock");
     } else if (humanChoice === "rock" && computerChoice === "scissors") {
         humanScore++;
@@ -31,17 +31,35 @@ function playRound(humanChoice, computerChoice) {
         humanScore++;
         console.log("You Win! Paper beats Rock");
     } else if (humanChoice === "paper" && computerChoice === "scissors") {
-        ComputerScore++;
+        computerScore++;
         console.log("You Lose! Scissors beats Paper");
     } else if (humanChoice === "scissors" && computerChoice === "rock") {
-        ComputerScore++;
+        computerScore++;
         console.log("You Lose! Rock beats Scissors");
     } else if (humanChoice === "scissors" && computerChoice === "paper") {
         humanScore++;
         console.log("You Win! Scissors beats paper");
     }
-    console.log(`Score: You: ${humanScore} | Computer: ${ComputerScore}`);
+    console.log(`Score: You: ${humanScore} | Computer: ${computerScore}`);
 }
 
-playRound(humanSelection, computerSelection);
+
+
+function playGame() {
+    for (let i = 0; i < 5; i++) {
+        const computerSelection = getComputerChoice();
+        const humanSelection = getHumanChoice();
+        playRound(humanSelection, computerSelection);
+    }
+}
+
+playGame();
+
+if(humanScore === computerScore){
+console.log("Its a draw! Play again")
+}else if(humanScore > computerScore){
+    console.log(`You win the whole series with ${humanScore} points.`)
+}else if(computerScore > humanScore){
+    console.log(`Computer wins the whole series with ${computerScore} points.`)
+}
 
