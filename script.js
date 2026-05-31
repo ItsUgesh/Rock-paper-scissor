@@ -1,5 +1,6 @@
 let humanScore = 0;
 let computerScore = 0;
+let roundCount = 0;
 
 function getComputerChoice() {
     const choices = ["rock", "paper", "scissors"];
@@ -10,6 +11,8 @@ function getComputerChoice() {
 const buttons = document.querySelectorAll(".btn");
 const resultDiv = document.querySelector(".result");
 const scoreDiv = document.querySelector(".score");
+const endResultDiv = document.querySelector(".end-result");
+
 
 function playRound(humanChoice, computerChoice) {
     if (humanChoice === computerChoice) {
@@ -36,13 +39,30 @@ function playRound(humanChoice, computerChoice) {
     scoreDiv.textContent = `Score: You: ${humanScore} | Computer: ${computerScore}`;
 }
 
-buttons.forEach(button => {
-    button.addEventListener("click", () => {
-        const computerSelection = getComputerChoice();
-        const humanSelection = button.id;
-        playRound(humanSelection, computerSelection);
+function playGame() {
+    buttons.forEach(button => {
+        button.addEventListener("click", () => {
+            if (roundCount < 5) {
+                const computerSelection = getComputerChoice();
+                const humanSelection = button.id;
+                playRound(humanSelection, computerSelection);
+                roundCount++;
+            } if(roundCount === 5) {
+                if (humanScore === computerScore) {
+                    endResultDiv.textContent = "Its a draw! Play again";
+                } else if (humanScore > computerScore) {
+                    endResultDiv.textContent = `You win the whole series with ${humanScore} points.`;
+                } else if (computerScore > humanScore) {
+                    endResultDiv.textContent = `Computer wins the whole series with ${computerScore} points.`;
+                }
+            }
+        });
     });
-});
+}
+
+playGame();
+
+
 
 
 
