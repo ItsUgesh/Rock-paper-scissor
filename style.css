@@ -1,0 +1,87 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    color: 1a1a2e;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+.subtitle {
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+.buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #ffffff;
+    color: 1a1a2e;
+    border: 1px solid #444;
+    transition: transform 0.1s, background-color 0.2s;
+}
+
+.btn:hover {
+    background-color: #d9d9e6;
+    transform: scale(1.05);
+}
+
+.result {
+    font-size: 1.1rem;
+    min-height: 30px;
+}
+
+.score {
+    font-size: 1rem;
+    color: #aaa;
+    min-height: 25px;
+}
+
+.end-result {
+    font-size: 1.3rem;
+    font-weight: bold;
+    min-height: 30px;
+    color: #e94560;
+}
+
+@media (max-width: 480px) {
+    .btn {
+        padding: 0.8rem 1.2rem;
+        font-size: 0.9rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+}
